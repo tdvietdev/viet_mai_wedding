@@ -3,16 +3,16 @@
     <div v-html="codeInStyleTag"></div>
     <p class="code barrage-0" ref="barrageFirst" :style="{transform:'translate('+initialOffset+'px)',top:'10px'}">
       <span class="mine">{{ wish }}</span>
-      <span v-for="(item, index) in filterBarrage(barrages, 0)" :key="index">{{ item }}</span>
+      <span v-for="(item, index) in filterBarrage(barrages, 0)" :key="index">{{ `${item.name} : ${item.wish}` }}</span>
     </p>
     <p class="code barrage-1" ref="barrageSecond" :style="{transform:'translate('+initialOffset+'px)',top:'40px'}">
-      <span v-for="(item, index) in filterBarrage(barrages, 1)" :key="index">{{ item }}</span>
+      <span v-for="(item, index) in filterBarrage(barrages, 1)" :key="index">{{ `${item.name} : ${item.wish}` }}</span>
     </p>
     <p class="code barrage-2" ref="barrageThird" :style="{transform:'translate('+initialOffset+'px)',top:'70px'}">
-      <span v-for="(item, index) in filterBarrage(barrages, 2)" :key="index">{{ item }}</span>
+      <span v-for="(item, index) in filterBarrage(barrages, 2)" :key="index">{{ `${item.name} : ${item.wish}` }}</span>
     </p>
     <p class="code barrage-3" ref="barrageFourth" :style="{transform:'translate('+initialOffset+'px)',top:'100px'}">
-      <span v-for="(item, index) in filterBarrage(barrages, 3)" :key="index">{{ item }}</span>
+      <span v-for="(item, index) in filterBarrage(barrages, 3)" :key="index">{{ `${item.name} : ${item.wish}` }}</span>
     </p>
     <div class="barrage-space"></div>
   </div>
@@ -22,10 +22,9 @@
   import data from '../mock/data'
 
   export default {
-    props: ['wish', 'canStart'],
+    props: ['wish', 'canStart', 'barrages'],
     data(){
       return {
-        barrages: data.barrages,
         animationStyle:'',
         initialOffset: 0
       }
@@ -43,7 +42,6 @@
       }
     },
     methods: {
-      // 弹幕动画开始
       barrageAnimationStart() {
         let barrageWidth = this.getWidth(this.$refs.barrage)
         let barrageWidthGroup = [

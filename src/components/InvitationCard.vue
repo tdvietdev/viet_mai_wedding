@@ -25,26 +25,7 @@
               </swiper-slide>
               <swiper-slide>
                 <div class="content-inside">
-                  <img class="content-inside-photo" src="../images/photo.jpg">
-                  <p>yyyyy！</p>
-                  <p><b>Jun & undefined</b></p>
-                  <p>时间：invalid date value</p>
-                  <p>地点：<b>location can not be found</b></p>
-                  <div class="content-inside-bless">
-                    <input
-                        placeholder="写下你的祝福"
-                        @keyup.enter="sendBarrage"
-                        @focus="isFocused = true"
-                        @blur="isFocused = false, hasEntered = false"
-                        v-model="wish"
-                        ref="wishInput"
-                    >
-                    <p v-if="!wish && isFocused && hasEntered">请输入祝福哦</p>
-                    <div>
-                      <button @click="sendBarrage">发送祝福弹幕</button>
-                      <button @click="closeInvitation">关闭</button>
-                    </div>
-                  </div>
+                  <img class="content-inside-photo" src="../images/a4.jpg">
                 </div>
               </swiper-slide>
               <swiper-slide>
@@ -77,7 +58,7 @@
         <div class="cover-inside-left" :class="{'opening':isOpening}">
           <div class="guest-info">
             <div class="gold-text">Thân gửi : </div>
-            <div class="gold-text guest-name">Bạn Phong</div>
+            <div class="gold-text guest-name">{{guest.name}}</div>
           </div>
         </div>
         <div class="cover-inside-right" :class="{'opening':isOpening}"></div>
@@ -109,7 +90,7 @@ export default {
       modules: [EffectCards],
     };
   },
-  props: ['canOpen'],
+  props: ['canOpen', 'guest'],
   data() {
     return {
       isOpening: false,
@@ -119,7 +100,6 @@ export default {
     }
   },
   methods: {
-    // 打开邀请函
     openInvitation(){
       this.isOpening = true
     },
@@ -129,7 +109,6 @@ export default {
         this.$emit('onClose')
       }, 660)
     },
-    // 发送弹幕
     sendBarrage(){
       this.$nextTick(() => {
         this.hasEntered = true
@@ -155,7 +134,7 @@ export default {
     width: 100%;
     height: 100%;
     padding: 30px 5px;
-    padding-top: 30px;
+    padding-top: 10px;
     z-index: 4;
     transform: scale(0.05);
     -webkit-transform: scale(0.05);
@@ -199,16 +178,20 @@ export default {
           transition: transform 0.6s cubic-bezier(0.4, 0, 1, 1);
           -webkit-transition: -webkit-transform 0.6s cubic-bezier(0.4, 0, 1, 1);
           &.invitation-up{
-            transform: translateY(-30px);
-            -webkit-transform: translateY(-30px);
+            transform: translateY(-20px);
+            -webkit-transform: translateY(-20px);
           }
-          .content-inside{
+          .content-inside {
             height: 100%;
-            padding: 20px;
+            padding: 10px;
             color: #a9895d;
-            background-color: #FFF1DE;
+            //background-color: #FFF1DE;
+            //background-image: url("../images/h2.png");
+            //background-origin: content-box;
+            //background-size: contain;
+
             text-align: center;
-            overflow: auto;
+            overflow: unset;
             .content-inside-photo{
               width: 100%;
               margin-bottom: 10px;
@@ -265,10 +248,14 @@ export default {
           position: absolute;
           left: 0;
           top: 0;
-          width: 70%;
+          width: 90%;
           height: 100%;
           border-radius: 10px;
           background-color: #D65047;
+          background-image: url("../images/cover.png");
+          background-origin: content-box;
+          background-size: contain;
+          background-repeat: no-repeat;
           box-shadow: 5px 0 10px rgba(0,0,0,0.2);
           z-index: 6;
           transition: transform 0.5s;
@@ -283,9 +270,9 @@ export default {
           .guest-info {
             position: absolute;
             font-family: 'Dancing Script';
-            font-size: 40px;
-            bottom: 30%;
-            margin-left: 20%;
+            font-size: 35px;
+            bottom: 15%;
+            margin-left: 10%;
 
             .guest-name {
               margin-left: 30px;
@@ -295,7 +282,7 @@ export default {
 
         .gold-text {
           font-family: 'Dancing Script', cursive;
-          color: gold;
+          color: #eec454;
         }
 
         .gold-text::after {
@@ -315,7 +302,7 @@ export default {
           position: absolute;
           right: 0;
           top: 0;
-          width: 40%;
+          width: 15%;
           height: 100%;
           border-radius: 10px;
           background-color: #D65047;
@@ -332,7 +319,7 @@ export default {
         }
         .cover-inside-seal{
           position: absolute;
-          left: 70%;
+          left: 90%;
           bottom: 100px;
           width: 80px;
           height: 80px;

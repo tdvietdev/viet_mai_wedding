@@ -20,8 +20,8 @@
       </svg>
     </div>
     <Executions :canExecute="canExecute" @onUpdating="scrollToBottom" @onFinish="canOpen = true"/>
-    <invitationCard :canOpen="canOpen" @onClose="canOpen = false, hasClosed = true" @sendBarrage="onAfterSending"/>
-    <Barrage :wish="wish" :canStart="canStart"/>
+    <invitationCard :canOpen="canOpen" :guest="this.guest" @onClose="canOpen = false, hasClosed = true" @sendBarrage="onAfterSending" />
+    <Barrage :wish="wish" :barrages="wishes" :canStart="canStart"/>
   </div>
 </template>
 
@@ -34,6 +34,8 @@
   import Executions from './Executions.vue'
   import InvitationCard from './InvitationCard.vue'
   import Barrage from './Barrage.vue'
+  import GuestService from "../services/GuestService";
+  import WishService from "../services/WishService";
 
   export default {
     name: 'Editor',
@@ -48,7 +50,10 @@
         canOpen: false,
         wish: '',
         hasClosed: false,
-        canStart: false
+        canStart: false,
+        guests: [],
+        guest: {},
+        wishes: [],
       }
     },
     created() {
@@ -70,10 +75,8 @@
     },
     methods: {
       scrollToBottom() {
-        // 保持页面一直滚到最下面
         this.$refs.editor.scrollTop = 100000
       },
-      // 代码输入
       progressivelyTyping() {
         return new Promise((resolve) => {
           let count = 0, typingCount = 0, typing
@@ -104,8 +107,32 @@
         setTimeout(() => {
           this.canStart = true
         }, 0)
-      }
-    }
+      },
+      getGuestId() {
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        return urlParams.get('uid')
+      },
+      onLoadGuest(_guest) {
+        this.guest = _guest.val() || {}
+      },
+      onUpdateWishes(items) {
+        let _wishes = [];
+
+        items.forEach((item) => {
+          let key = item.key;
+          let data = item.val();
+
+          _wishes.push(data)
+        });
+
+        this.wishes = _wishes;
+      },
+    },
+    mounted() {
+      WishService.getAll().on("value", this.onUpdateWishes);
+      GuestService.get(this.getGuestId()).on("value", this.onLoadGuest);
+    },
   }
 </script>
 
