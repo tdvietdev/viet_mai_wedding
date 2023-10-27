@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>dddd</h1>
+  <div class="swiper-content">
+    <h1>Timeline</h1>
   </div>
 </template>
 
