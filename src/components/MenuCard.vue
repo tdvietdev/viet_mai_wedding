@@ -4,10 +4,10 @@
       Menu
     </div>
 
-    <div class="list-item" v-for="item in menus">
-      <div class="item flex-row" @click="handleSlideTo(item.index)">
-        <div class="icon">
-          {{item.icon}}
+    <div class="list-item">
+      <div class="item flex-row" v-for="item in menus" @click="handleSlideTo(item.index)">
+        <div class="icon center-content">
+          <font-awesome-icon :icon=item.icon />
         </div>
         <div class="text">
           {{item.text}}
@@ -23,11 +23,11 @@ export default {
   data() {
     return {
       menus: [
-        {icon: 'a1', text: 'Lời mời', index: 1},
-        {icon: 'a1', text: 'Mốc thời gian', index: 2},
-        {icon: 'a1', text: 'Album ảnh', index: 3},
-        {icon: 'a1', text: 'Thông tin dâu rể', index: 4},
-        {icon: 'a1', text: 'Gửi lời chúc', index: 5},
+        {icon: 'fa-solid fa-paperclip', text: 'Lời mời', index: 0},
+        {icon: 'fa-solid fa-calendar', text: 'Mốc thời gian', index: 1},
+        {icon: 'fa-solid fa-images', text: 'Album ảnh', index: 2},
+        {icon: 'fa-solid fa-info', text: 'Thông tin dâu rể', index: 3},
+        {icon: 'fa-solid fa-comment-dollar', text: 'Gửi lời chúc', index: 4},
       ],
     };
   },
@@ -62,7 +62,15 @@ export default {
     height: fit-content;
 
     .item {
+      display: flex;
 
+      .icon {
+        width: 20px;
+      }
+
+      .text {
+        flex: 1;
+      }
     }
   }
 </style>

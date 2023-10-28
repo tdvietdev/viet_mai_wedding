@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="swiper-content">
     <h1>Album</h1>
   </div>
 </template>

@@ -26,6 +26,9 @@
               <TimeLine/>
             </swiper-slide>
             <swiper-slide>
+              <Album/>
+            </swiper-slide>
+            <swiper-slide>
               <Information/>
             </swiper-slide>
             <swiper-slide>
@@ -84,6 +87,7 @@ import Wishes from "./pages/Wishes.vue"
 import DateTime from "./pages/DateTime.vue"
 import Information from "./pages/Information.vue"
 import TimeLine from "./pages/TimeLine.vue"
+import Album from "./pages/Album.vue"
 
 // import required modules
 import {EffectCards} from "swiper/modules";
@@ -97,6 +101,7 @@ export default {
     Information,
     TimeLine,
     MenuCard,
+    Album,
   },
   setup() {
     return {
