@@ -335,7 +335,7 @@ export default {
         height: 100%;
         border-radius: 10px;
         background-color: #D65047;
-        background-image: url("../images/cover.png");
+        background-image: url("../images/cover1.png");
         background-origin: content-box;
         background-size: contain;
         background-repeat: no-repeat;
