@@ -7,18 +7,18 @@ class GuestService {
     return db;
   }
   
-  get(id) {
+  get(id: string) {
     return db.child(id)
   }
-  create(tutorial) {
+  create(tutorial: any) {
     return db.push(tutorial);
   }
   
-  update(key, value) {
+  update(key: any, value: any) {
     return db.child(key).update(value);
   }
   
-  delete(key) {
+  delete(key: any) {
     return db.child(key).remove();
   }
   
