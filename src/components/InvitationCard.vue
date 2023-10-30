@@ -26,7 +26,7 @@
               <TimeLine/>
             </swiper-slide>
             <swiper-slide>
-              <Album/>
+              <Album galleryID="my-test-gallery" :images="images"/>
             </swiper-slide>
             <swiper-slide>
               <Information/>
@@ -116,6 +116,32 @@ export default {
       isFocused: false,
       hasEntered: false,
       swiper: null,
+      images: [
+        {
+          largeURL:
+            'https://cdn.photoswipe.com/photoswipe-demo-images/photos/1/img-2500.jpg',
+          thumbnailURL:
+            'https://cdn.photoswipe.com/photoswipe-demo-images/photos/1/img-200.jpg',
+          width: 1875,
+          height: 2500,
+        },
+        {
+          largeURL:
+            'https://cdn.photoswipe.com/photoswipe-demo-images/photos/2/img-2500.jpg',
+          thumbnailURL:
+            'https://cdn.photoswipe.com/photoswipe-demo-images/photos/2/img-200.jpg',
+          width: 1669,
+          height: 2500,
+        },
+        {
+          largeURL:
+            'https://cdn.photoswipe.com/photoswipe-demo-images/photos/3/img-2500.jpg',
+          thumbnailURL:
+            'https://cdn.photoswipe.com/photoswipe-demo-images/photos/3/img-200.jpg',
+          width: 2500,
+          height: 1666,
+        },
+      ],
     }
   },
   methods: {
