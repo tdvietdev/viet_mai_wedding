@@ -1,7 +1,6 @@
 <template>
   <div class="swiper-content">
-    <h1>Timeline</h1>
-    <img src="../../images/common/timeline3.png" alt="">
+    <img class="time-line-image" src="../../images/common/timeline3.png" alt="">
   </div>
 </template>
 
@@ -21,5 +20,7 @@ export default {
 </script>
 
 <style>
-
+  .time-line-image {
+    max-width:100%;
+  }
 </style>

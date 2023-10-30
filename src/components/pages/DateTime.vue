@@ -39,6 +39,14 @@
       <div class="luna-date">
         (Nhằm ngày 20 tháng 10 năm Quý Mão)
       </div>
+      <div class="place-area flex-col center-content">
+        <div class="place-value">
+          Tại tư gia nhà trai
+        </div>
+        <div class="place-description">
+          (<a href="https://maps.app.goo.gl/XpN5XAk1BJrimV1y6?g_st=ic">Thôn ngọc đới, xã Quảng Phúc, huyện Quảng Xương,<br>Tỉnh Thanh Hoá</a>)
+        </div>
+      </div>
       <div class="family-area center-content flex-col">
         <div class="family-header">
           Gia đình
@@ -46,15 +54,21 @@
         <div class="parents flex-row">
           <div class="flex-col center-content">
             <div>Nhà trai</div>
-            <div>Ông. Trịnh Đình Trung</div>
-            <div>Bà. Lê Thị Giang</div>
+            <div class="script-font">Ông. Trịnh Đình Trung</div>
+            <div class="script-font">Bà. Lê Thị Giang</div>
           </div>
           <div class="flex-col center-content">
             <div>Nhà gái</div>
-            <div>Ông. Lê Công Thư</div>
-            <div>Bà. Hà Thị Hương</div>
+            <div class="script-font">Ông. Lê Công Thư</div>
+            <div class="script-font">Bà. Hà Thị Hương</div>
           </div>
         </div>
+      </div>
+      <div class="welcome">
+        Rất hân hạnh được đón tiếp!
+      </div>
+      <div class="welcome-1">
+        Sự có mặt có quý khách là niềm vui cho gia đình chúng tôi
       </div>
     </div>
   </div>
@@ -84,7 +98,7 @@ export default {
     flex-direction: column;
 
     .invitation-head {
-      font-size: 30px;
+      font-size: 33px;
     }
 
     .invitation-name {
@@ -92,7 +106,7 @@ export default {
     }
 
     .invitation-foot {
-      font-size: 30px;
+      font-size: 28px;
     }
 
     .invitation {
@@ -101,6 +115,7 @@ export default {
 
     .our {
       font-size: 50px;
+      line-height: 1.2;
     }
 
     .date-time-area {
@@ -121,6 +136,17 @@ export default {
         .flex-col {
           flex: 1;
         }
+      }
+    }
+
+    .place-area {
+      .place-value {
+        font-size: 28px;
+      }
+
+      .place-description {
+        font-size: 18px;
+        text-align: center;
       }
     }
 
@@ -148,13 +174,25 @@ export default {
       }
 
       .date {
+        line-height: 1;
         width: 200px;
         border-left: #181818 2px solid;
       }
 
       .time {
+        line-height: 1;
         width: 200px;
         border-right: #181818 2px solid;
+
+        .time-text {
+          margin-top: 10px;
+          margin-bottom: 5px;
+        }
+
+        .time-value {
+          margin-top: 5px;
+          margin-bottom: 10px;
+        }
       }
     }
   }

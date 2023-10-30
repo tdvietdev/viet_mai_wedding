@@ -1,12 +1,15 @@
 <template>
   <div class="menu-card center-content">
     <div class="header">
-      Menu
+      <div class="circle-icon icon">
+        <font-awesome-icon :icon="'fa-bars'" v-if="!this.showMenu" @click="toggleMenu()"/>
+        <font-awesome-icon :icon="'fa-xmark'" v-else @click="toggleMenu()"/>
+      </div>
     </div>
 
-    <div class="list-item">
+    <div class="list-item" v-if="this.showMenu">
       <div class="item flex-row" v-for="item in menus" @click="handleSlideTo(item.index)">
-        <div class="icon center-content">
+        <div class="circle-icon icon">
           <font-awesome-icon :icon=item.icon />
         </div>
         <div class="text">
@@ -29,11 +32,14 @@ export default {
         {icon: 'fa-solid fa-info', text: 'Thông tin dâu rể', index: 3},
         {icon: 'fa-solid fa-comment-dollar', text: 'Gửi lời chúc', index: 4},
       ],
+      showMenu: false
     };
   },
   methods: {
-    toggleCard() {
-      this.isActive = !this.isActive;
+    toggleMenu() {
+      console.log("xx")
+      console.log(this.showMenu)
+      this.showMenu = !this.showMenu;
     },
   },
   props: ['handleSlideTo'],
@@ -49,8 +55,8 @@ export default {
     flex-direction: column;
 
     background-color: #000;
-    color: #fff;
-    opacity: 0.2;
+    opacity: 0.5;
+    color: #ffffff;
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
     border-top-left-radius: 20px;
     border-bottom-right-radius: 20px;
@@ -61,11 +67,16 @@ export default {
     bottom: 0;
     height: fit-content;
 
+    .icon {
+      background-color: #000;
+    }
+
     .item {
       display: flex;
 
       .icon {
-        width: 20px;
+        margin-left: 5px;
+        margin-right: 10px;
       }
 
       .text {
