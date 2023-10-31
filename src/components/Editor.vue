@@ -115,6 +115,9 @@
       },
       onLoadGuest(_guest) {
         this.guest = _guest.val() || {}
+        if (this.guest.name) {
+          document.querySelector('meta[property="og:title"]').setAttribute("content", `Thân gửi: ${this.guest.name}!`);
+        }
       },
       onUpdateWishes(items) {
         let _wishes = [];
