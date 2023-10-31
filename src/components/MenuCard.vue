@@ -1,9 +1,9 @@
 <template>
-  <div class="menu-card center-content">
+  <div class="menu-card center-content" :class="{'rm-bg': !this.showMenu}">
     <div class="header">
-      <div class="circle-icon icon">
-        <font-awesome-icon :icon="'fa-bars'" v-if="!this.showMenu" @click="toggleMenu()"/>
-        <font-awesome-icon :icon="'fa-xmark'" v-else @click="toggleMenu()"/>
+      <div class="circle-icon icon" @click="toggleMenu()">
+        <font-awesome-icon :icon="'fa-bars'" v-if="!this.showMenu"/>
+        <font-awesome-icon :icon="'fa-xmark'" v-else/>
       </div>
     </div>
 
@@ -47,6 +47,10 @@ export default {
 </script>
 
 <style>
+  .rm-bg {
+    background-color: unset !important;
+  }
+
   .menu-card {
     position: absolute;
     right: 0;
@@ -67,12 +71,20 @@ export default {
     bottom: 0;
     height: fit-content;
 
+    .header {
+      padding: 10px 0;
+      cursor: pointer;
+    }
+
     .icon {
       background-color: #000;
     }
 
     .item {
       display: flex;
+      padding: 5px 2px;
+      border-top: rgba(223,204,232,0.38) 1px solid;
+      cursor: pointer;
 
       .icon {
         margin-left: 5px;

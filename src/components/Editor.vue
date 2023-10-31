@@ -134,7 +134,7 @@
     },
     mounted() {
       WishService.getAll().on("value", this.onUpdateWishes);
-      GuestService.get(this.getGuestId()).on("value", this.onLoadGuest);
+      GuestService.get(this.getGuestId() || 'all').on("value", this.onLoadGuest);
     },
   }
 </script>

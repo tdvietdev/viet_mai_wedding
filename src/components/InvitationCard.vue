@@ -1,7 +1,7 @@
 <template>
   <div class="wedding-invitation" :class="{ 'invitation-bounce':canOpen }">
     <div class="invitation-container" :class="{ 'invitation-down':isOpening }">
-      <MenuCard :handleSlideTo="handleSlideTo"/>
+      <MenuCard :handleSlideTo="handleSlideTo" v-if="isOpening"/>
       <div class="invitation-cover">
         <div class="cover-content" :class="{'invitation-up':isOpening}">
           <swiper
@@ -354,9 +354,10 @@ export default {
         .guest-info {
           position: absolute;
           font-family: 'Dancing Script';
-          font-size: 35px;
-          bottom: 15%;
+          font-size: 30px;
+          bottom: 10%;
           margin-left: 10%;
+          margin-right: 20%;
 
           .guest-name {
             margin-left: 30px;
