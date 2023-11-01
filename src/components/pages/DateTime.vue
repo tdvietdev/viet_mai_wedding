@@ -155,10 +155,18 @@ export default {
 
       .bride {
         flex: 1;
+
+        .breakpoint-small({
+          margin-top: 5px;
+        });
       }
 
       .goom {
         flex: 1;
+
+        .breakpoint-small({
+          margin-bottom: 5px;
+        });
       }
 
       .breakpoint-small({
