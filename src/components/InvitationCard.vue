@@ -20,7 +20,7 @@
             @swiper="onSwiper"
           >
             <swiper-slide>
-              <DateTime/>
+              <DateTime :guestName="this.guest.name"/>
             </swiper-slide>
             <swiper-slide>
               <TimeLine/>
@@ -62,8 +62,8 @@
         </div>
         <div class="cover-inside-left" :class="{'opening':isOpening}">
           <div class="guest-info">
-            <div class="gold-text">Thân gửi :</div>
-            <div class="gold-text guest-name">{{ guest.name }}</div>
+            <div class="gold-text text-center">Thân gửi</div>
+            <div class="gold-text guest-name text-center">{{ guest.name }}</div>
           </div>
         </div>
         <div class="cover-inside-right" :class="{'opening':isOpening}"></div>
@@ -345,6 +345,8 @@ export default {
         -webkit-transition: -webkit-transform 0.5s;
         transform-origin: 0 50%;
         -webkit-transform-origin: 0 50%;
+        display: flex;
+        flex-direction: column-reverse;
 
         &.opening {
           transform: rotate3d(0, 1, 0, -140deg);
@@ -352,15 +354,16 @@ export default {
         }
 
         .guest-info {
-          position: absolute;
           font-family: 'Dancing Script';
           font-size: 30px;
-          bottom: 10%;
-          margin-left: 10%;
-          margin-right: 20%;
+          margin: 20px;
 
           .guest-name {
             margin-left: 30px;
+          }
+
+          @media only screen and (max-width: 600px) {
+            font-size: 25px;
           }
         }
       }

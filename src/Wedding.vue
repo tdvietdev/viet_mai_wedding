@@ -19,6 +19,7 @@
 
 <style lang="less">
 @import './assets/base.less';
+
 html,
 body{
   height: 100%;

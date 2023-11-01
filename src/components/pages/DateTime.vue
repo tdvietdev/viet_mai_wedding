@@ -5,14 +5,14 @@
         Xin trân trọng kính mời
       </div>
       <div class="invitation-name script-font">
-        Em Hoa
+        {{ guestName }}
       </div>
       <div class="invitation-foot">
         Đến dự lễ thành hôn của hai chúng tôi
       </div>
     </div>
     <div class="our script-font center-content flex-col">
-      <div class="bride">
+      <div class="goom">
         Trịnh Đình Việt
       </div>
       <div class="and">
@@ -24,7 +24,6 @@
     </div>
     <div class="date-time-area center-content flex-col">
       Hôn lễ được tổ chức
-
       <div class="date-time-table flex-row">
         <div class="time center-content flex-col">
           <div class="time-text">Vào lúc</div>
@@ -36,15 +35,19 @@
           <div class="date-value">02/12/2023</div>
         </div>
       </div>
-      <div class="luna-date">
-        (Nhằm ngày 20 tháng 10 năm Quý Mão)
+    </div>
+      <div class="luna-date text-center">
+        Nhằm ngày 20 tháng 10 năm Quý Mão
       </div>
       <div class="place-area flex-col center-content">
         <div class="place-value">
           Tại tư gia nhà trai
         </div>
         <div class="place-description">
-          (<a href="https://maps.app.goo.gl/XpN5XAk1BJrimV1y6?g_st=ic">Thôn ngọc đới, xã Quảng Phúc, huyện Quảng Xương,<br>Tỉnh Thanh Hoá</a>)
+          <a href="https://maps.app.goo.gl/XpN5XAk1BJrimV1y6?g_st=ic">
+            <font-awesome-icon :icon="'fa-map-location-dot'"/>
+            Thôn Ngọc Đới, xã Quảng Phúc
+            <br> huyện Quảng Xương, Tỉnh Thanh Hoá</a>
         </div>
       </div>
       <div class="family-area center-content flex-col">
@@ -64,18 +67,18 @@
           </div>
         </div>
       </div>
-      <div class="welcome">
+      <div class="welcome text-center">
         Rất hân hạnh được đón tiếp!
       </div>
-      <div class="welcome-1">
+      <div class="welcome-1 text-center">
         Sự có mặt có quý khách là niềm vui cho gia đình chúng tôi
       </div>
-    </div>
   </div>
 </template>
 
 <script>
 export default {
+  props: ['guestName'],
   data() {
     return {
       isActive: false,
@@ -89,24 +92,56 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less">
+  @import '../../assets/media';
+
   .date_time_content {
+    font-family: 'Josefin Sans', sans-serif;
     background-color: bisque;
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
 
+    .welcome, .welcome-1 {
+      font-size: 18px;
+
+      .breakpoint-small({
+        font-size: 12px;
+      });
+    }
+
+    .luna-date {
+      font-size: 18px;
+
+      .breakpoint-small({
+        font-size: 14px;
+      });
+    }
+
     .invitation-head {
-      font-size: 33px;
+      font-size: 30px;
+
+      .breakpoint-small({
+        font-size: 20px;
+      });
     }
 
     .invitation-name {
+      text-align: center;
       font-size: 35px;
+
+      .breakpoint-small({
+        font-size: 22px;
+      });
     }
 
     .invitation-foot {
-      font-size: 28px;
+      font-size: 24px;
+
+      .breakpoint-small({
+        font-size: 18px;
+      });
     }
 
     .invitation {
@@ -114,20 +149,50 @@ export default {
     }
 
     .our {
-      font-size: 50px;
+      font-size: 40px;
       line-height: 1.2;
+      margin: auto 0;
+
+      .bride {
+        flex: 1;
+      }
+
+      .goom {
+        flex: 1;
+      }
+
+      .breakpoint-small({
+        font-size: 30px;
+        line-height: 1;
+      });
     }
 
     .date-time-area {
       font-size: 30px;
+
+      .breakpoint-small({
+        font-size: 20px;
+      });
     }
 
     .family-area {
       font-size: 25px;
       width: 100%;
+      margin-top: 15px;
+
+      .breakpoint-small({
+        font-size: 20px;
+        margin-top: 10px;
+      });
 
       .family-header {
         font-size: 30px;
+        line-height: 1;
+
+        .breakpoint-small({
+          line-height: 1;
+          font-size: 22px;
+        });
       }
 
       .parents {
@@ -136,17 +201,30 @@ export default {
         .flex-col {
           flex: 1;
         }
+
+        .breakpoint-small({
+          font-size: 18px;
+          line-height: 1.5;
+        });
       }
     }
 
     .place-area {
       .place-value {
         font-size: 28px;
+
+        .breakpoint-small({
+          font-size: 20px;
+        });
       }
 
       .place-description {
         font-size: 18px;
         text-align: center;
+
+        .breakpoint-small({
+          font-size: 14px;
+        });
       }
     }
 
@@ -161,6 +239,12 @@ export default {
         height  : 1px;
         width   : 200px;
         border-bottom: 4px solid #181818;
+
+        .breakpoint-small({
+          left  : 150px;
+          width   : 100px;
+          border-bottom: 2px solid #181818;
+        });
       }
 
       &:after {
@@ -171,12 +255,42 @@ export default {
         height  : 1px;
         width   : 200px;
         border-top: 4px solid #181818;
+
+        .breakpoint-small({
+          left  : 150px;
+          width   : 100px;
+          border-top: 2px solid #181818;
+        });
       }
 
       .date {
         line-height: 1;
         width: 200px;
         border-left: #181818 2px solid;
+
+        .breakpoint-small({
+          padding-right: 50px;
+        });
+
+        .date-text {
+          margin-top: 10px;
+          margin-bottom: 5px;
+
+          .breakpoint-small({
+            margin-top: 5px;
+            margin-bottom: 2px;
+          });
+        }
+
+        .date-value {
+          margin-top: 5px;
+          margin-bottom: 10px;
+
+          .breakpoint-small({
+            margin-top: 2px;
+            margin-bottom: 5px;
+          });
+        }
       }
 
       .time {
@@ -184,14 +298,28 @@ export default {
         width: 200px;
         border-right: #181818 2px solid;
 
+        .breakpoint-small({
+          padding-left: 100px;
+        });
+
         .time-text {
           margin-top: 10px;
           margin-bottom: 5px;
+
+          .breakpoint-small({
+            margin-top: 5px;
+            margin-bottom: 2px;
+          });
         }
 
         .time-value {
           margin-top: 5px;
           margin-bottom: 10px;
+
+          .breakpoint-small({
+            margin-top: 2px;
+            margin-bottom: 5px;
+          });
         }
       }
     }

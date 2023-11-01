@@ -8,11 +8,21 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
-import { faUserSecret, faPaperclip, faCalendar, faImages, faInfo, faCommentDollar, faBars, faXmark } from '@fortawesome/free-solid-svg-icons'
+import {
+  faUserSecret,
+  faPaperclip,
+  faCalendar,
+  faImages,
+  faInfo,
+  faCommentDollar,
+  faBars,
+  faXmark,
+  faLocationArrow, faMapLocationDot
+} from '@fortawesome/free-solid-svg-icons'
 import { faSquare } from '@fortawesome/free-regular-svg-icons'
 
 /* add icons to the library */
-library.add(faUserSecret, faPaperclip, faCalendar, faImages, faInfo, faCommentDollar, faBars, faXmark)
+library.add(faUserSecret, faPaperclip, faCalendar, faImages, faInfo, faCommentDollar, faBars, faXmark, faLocationArrow, faMapLocationDot)
 
 const app = createApp(Wedding)
 
