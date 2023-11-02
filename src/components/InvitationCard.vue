@@ -32,30 +32,6 @@
               <Information/>
             </swiper-slide>
             <swiper-slide>
-              <div class="content-inside">
-                <img class="content-inside-photo" src="../images/photo.jpg">
-                <p>zzzz！</p>
-                <p><b>Jun & undefined</b></p>
-                <p>时间：invalid date value</p>
-                <p>地点：<b>location can not be found</b></p>
-                <div class="content-inside-bless">
-                  <input
-                    placeholder="写下你的祝福"
-                    @keyup.enter="sendBarrage"
-                    @focus="isFocused = true"
-                    @blur="isFocused = false, hasEntered = false"
-                    v-model="wish"
-                    ref="wishInput"
-                  >
-                  <p v-if="!wish && isFocused && hasEntered">请输入祝福哦</p>
-                  <div>
-                    <button @click="handleSlideTo">发送祝福弹幕</button>
-                    <button @click="closeInvitation">关闭</button>
-                  </div>
-                </div>
-              </div>
-            </swiper-slide>
-            <swiper-slide>
               <Wishes/>
             </swiper-slide>
           </swiper>
@@ -67,7 +43,7 @@
           </div>
         </div>
         <div class="cover-inside-right" :class="{'opening':isOpening}"></div>
-        <img class="cover-inside-seal" src="../images/open2.png" @click="openInvitation"
+        <img class="cover-inside-seal" src="../images/common/open.png" @click="openInvitation"
              :class="{'invitation-flight':isOpening}">
       </div>
     </div>
@@ -335,7 +311,7 @@ export default {
         height: 100%;
         border-radius: 10px;
         background-color: #D65047;
-        background-image: url("../images/cover1.png");
+        background-image: url("../images/cover.png");
         background-origin: content-box;
         background-size: contain;
         background-repeat: no-repeat;

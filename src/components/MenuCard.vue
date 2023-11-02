@@ -29,7 +29,7 @@ export default {
         {icon: 'fa-solid fa-paperclip', text: 'Lời mời', index: 0},
         {icon: 'fa-solid fa-calendar', text: 'Mốc thời gian', index: 1},
         {icon: 'fa-solid fa-images', text: 'Album ảnh', index: 2},
-        {icon: 'fa-solid fa-info', text: 'Thông tin dâu rể', index: 3},
+        {icon: 'fa-solid fa-info', text: 'Xác nhận tham dự', index: 3},
         {icon: 'fa-solid fa-comment-dollar', text: 'Gửi lời chúc', index: 4},
       ],
       showMenu: false
@@ -37,8 +37,6 @@ export default {
   },
   methods: {
     toggleMenu() {
-      console.log("xx")
-      console.log(this.showMenu)
       this.showMenu = !this.showMenu;
     },
   },

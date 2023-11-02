@@ -1,6 +1,6 @@
 <template>
   <div class="swiper-content center-content">
-    <img class="time-line-image" src="../../images/common/timeline3.png" alt="">
+    <img class="time-line-image" src="../../images/common/timeline.png" alt="">
   </div>
 </template>
 

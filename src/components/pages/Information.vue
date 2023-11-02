@@ -1,6 +1,13 @@
 <template>
-  <div class="swiper-content">
-    <h1>info</h1>
+  <div class="swiper-content confirm-invitation">
+    <div class="bride">
+      <div class="name">Cô dâu</div>
+      <div class="phone">0376.314.966</div>
+      <div class="Địa chỉ "></div>
+    </div>
+    <div class="goom">
+
+    </div>
   </div>
 </template>
 
@@ -19,6 +26,8 @@ export default {
 };
 </script>
 
-<style>
-
+<style lang="less">
+  .confirm-invitation {
+    display: flex;
+  }
 </style>
