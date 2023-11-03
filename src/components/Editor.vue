@@ -20,7 +20,7 @@
       </svg>
     </div>
     <Executions :canExecute="canExecute" @onUpdating="scrollToBottom" @onFinish="canOpen = true"/>
-    <invitationCard :canOpen="canOpen" :guest="this.guest" @onClose="canOpen = false, hasClosed = true" @sendBarrage="onAfterSending" />
+    <invitationCard :wishes="wishes" :canOpen="canOpen" :guest="this.guest" @onClose="canOpen = false, hasClosed = true" @sendBarrage="onAfterSending" />
     <Barrage :wish="wish" :barrages="wishes" :canStart="canStart"/>
   </div>
 </template>
@@ -114,7 +114,8 @@
         return urlParams.get('uid')
       },
       onLoadGuest(_guest) {
-        this.guest = _guest.val() || {}
+        this.guest = _guest.val() ? {id: _guest.key, name: _guest.val().name} : {}
+        // this.guest = _guest.val() || {}
         if (this.guest.name) {
           document.querySelector('meta[property="og:title"]').setAttribute("content", `Thân gửi: ${this.guest.name}!`);
         }

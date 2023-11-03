@@ -5,7 +5,7 @@
       <div class="invitation-cover">
         <div class="cover-content" :class="{'invitation-up':isOpening}">
           <swiper
-            :direction="'vertical'"
+            :direction="'horizontal'"
             :effect="'cards'"
             :grabCursor="true"
             :modules="modules"
@@ -26,13 +26,13 @@
               <TimeLine/>
             </swiper-slide>
             <swiper-slide>
+              <Wishes :guest="this.guest" :wishes="this.wishes"/>
+            </swiper-slide>
+            <swiper-slide>
               <Album galleryID="my-test-gallery" :images="images"/>
             </swiper-slide>
             <swiper-slide>
               <Information/>
-            </swiper-slide>
-            <swiper-slide>
-              <Wishes/>
             </swiper-slide>
           </swiper>
         </div>
@@ -84,7 +84,7 @@ export default {
       modules: [EffectCards],
     };
   },
-  props: ['canOpen', 'guest'],
+  props: ['canOpen', 'guest', 'wishes'],
   data() {
     return {
       isOpening: false,
@@ -332,7 +332,7 @@ export default {
         .guest-info {
           font-family: 'Dancing Script';
           font-size: 30px;
-          margin: 20px;
+          margin: 60px 20px;
 
           .guest-name {
             margin-left: 30px;

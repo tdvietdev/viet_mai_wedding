@@ -26,86 +26,9 @@
       </div>
     </div>
     <div class="text-area flex-col">
-      <div class="list-wishes">
-        <div class="wish-item">
-          <div class="user-name">
-            Em Hoa
-          </div>
-          <div class="message">
-            Chúc hạnh phúc 2 anh chị
-          </div>
-        </div>
-
-        <div class="wish-item">
-          <div class="user-name">
-            Em Hoa
-          </div>
-          <div class="message">
-            Chúc hạnh phúc 2 anh chị
-          </div>
-        </div>
-
-        <div class="wish-item">
-          <div class="user-name">
-            Em Hoa
-          </div>
-          <div class="message">
-            Chúc hạnh phúc 2 anh chị
-          </div>
-        </div>
-
-        <div class="wish-item">
-          <div class="user-name">
-            Em Hoa
-          </div>
-          <div class="message">
-            Chúc hạnh phúc 2 anh chị
-          </div>
-        </div>
-
-        <div class="wish-item">
-          <div class="user-name">
-            Em Hoa
-          </div>
-          <div class="message">
-            Chúc hạnh phúc 2 anh chị
-          </div>
-        </div>
-
-        <div class="wish-item">
-          <div class="user-name">
-            Em Hoa
-          </div>
-          <div class="message">
-            Chúc hạnh phúc 2 anh chị
-          </div>
-        </div>
-
-        <div class="wish-item">
-          <div class="user-name">
-            Em Hoa
-          </div>
-          <div class="message">
-            Chúc hạnh phúc 2 anh chị
-          </div>
-        </div>
-
-        <div class="wish-item">
-          <div class="user-name">
-            Em Hoa
-          </div>
-          <div class="message">
-            Chúc hạnh phúc 2 anh chị
-          </div>
-        </div>
-
-        <div class="wish-item">
-          <div class="user-name">
-            Em Hoa
-          </div>
-          <div class="message">
-            Chúc hạnh phúc 2 anh chị
-          </div>
+      <div class="list-wishes" id="scroll-1">
+        <div class="wish-item" v-for="(wish, index) in wishes" :key="index">
+          <span class="user-name">{{ wish.name }}:</span> {{ wish.wish }}
         </div>
       </div>
       <div class="input-area flex-row">
@@ -121,7 +44,7 @@
           </div>
         </div>
         <div class="button-element center-content">
-          <button class="submit-button" @click="sendMessage()">
+          <button class="submit-button" @click="sendMessage()" :disabled="!message || !name">
             Gửi
           </button>
         </div>
@@ -131,14 +54,25 @@
 </template>
 
 <script>
+import WishService from "../../services/WishService";
+
 export default {
+  props: ['guest', 'wishes'],
   data() {
     return {
       copyIconGoom: 'fa-copy',
       copyIconBride: 'fa-copy',
       message: '',
-      name: 'ok',
+      name: this.guest.id === 'all' ? '' : this.guest.name,
     };
+  },
+  watch: {
+    guest: {
+      deep: true,
+      handler(value) {
+        this.name = value.id === 'all' ? '' : value.name
+      }
+    }
   },
   methods: {
     copyToClipBoard(type) {
@@ -162,7 +96,21 @@ export default {
       }
       navigator.clipboard.writeText(bankId);
     },
+    sendMessage() {
+      WishService.create({name: this.name, wish: this.message})
+      this.message = ''
+      this.scrollToBottom()
+    },
+    scrollToBottom() {
+      setTimeout(() => {
+        const container = this.$el.querySelector("#scroll-1");
+        container.scrollTop = container.scrollHeight;
+      }, 200)
+    },
   },
+  mounted() {
+    this.scrollToBottom()
+  }
 };
 </script>
 
@@ -171,12 +119,16 @@ export default {
 
   .wishes-page {
     .header {
+      font-size: 30px;
+
       .breakpoint-small({
         font-size: 18px;
       });
     }
 
     .bank-area {
+      font-size: 22px;
+
       .breakpoint-small({
         font-size: 16px;
       });
@@ -190,23 +142,56 @@ export default {
 
         .qr {
           .image {
-            max-height: 100px;
+            max-height: 150px;
+
+            .breakpoint-small({
+              max-height: 100px;
+            });
           }
         }
       }
     }
 
     .text-area {
+      font-size: 20px;
+
+      .breakpoint-small({
+        font-size: 14px;
+      });
+
+
       flex: 1;
       overflow: auto;
 
       .list-wishes {
+        flex: 1;
         overflow: scroll;
         max-height: 100%;
+        border: #d9a150 2px solid;
+        margin: 10px;
+
+        .breakpoint-small({
+          padding: 5px 10px;
+          margin-top: 10px;
+        });
+
+
+        .wish-item {
+          .user-name {
+            color: #ef6b60;
+            font-weight: bold;
+          }
+        }
       }
 
       .input-area {
-        flex: 1;
+        .submit-button {
+          font-size: 22px;
+
+          .breakpoint-small({
+            font-size: 14px;
+          });
+        }
 
         .inputs {
           flex: 1;
@@ -215,6 +200,7 @@ export default {
         .input-controller {
           margin-top: 10px;
           .text {
+            width: 100px;
 
             .breakpoint-small({
               width: 80px;
@@ -223,10 +209,19 @@ export default {
 
           .input-elm {
             flex: 1;
+            font-size: 18px;
+
+            .breakpoint-small({
+              font-size: 13px;
+            });
           }
 
           .message-input {
-            height: 60px;
+            height: 80px;
+
+            .breakpoint-small({
+              height: 60px;
+            });
           }
         }
       }

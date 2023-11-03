@@ -28,9 +28,9 @@ export default {
       menus: [
         {icon: 'fa-solid fa-paperclip', text: 'Lời mời', index: 0},
         {icon: 'fa-solid fa-calendar', text: 'Mốc thời gian', index: 1},
-        {icon: 'fa-solid fa-images', text: 'Album ảnh', index: 2},
-        {icon: 'fa-solid fa-info', text: 'Xác nhận tham dự', index: 3},
-        {icon: 'fa-solid fa-comment-dollar', text: 'Gửi lời chúc', index: 4},
+        {icon: 'fa-solid fa-comment-dollar', text: 'Gửi lời chúc', index: 2},
+        {icon: 'fa-solid fa-images', text: 'Album ảnh', index: 3},
+        {icon: 'fa-solid fa-info', text: 'Liên hệ', index: 4},
       ],
       showMenu: false
     };
