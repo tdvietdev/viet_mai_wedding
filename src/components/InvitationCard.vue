@@ -3,19 +3,14 @@
     <div class="invitation-container" :class="{ 'invitation-down':isOpening }">
       <MenuCard :handleSlideTo="handleSlideTo" v-if="isOpening"/>
       <div class="invitation-cover">
-        <div class="cover-content" :class="{'invitation-up':isOpening}">
+        <div class="cover-content" v-if="isOpening" :class="{'invitation-up':isOpening}">
           <swiper
-            :direction="'horizontal'"
-            :effect="'cards'"
-            :grabCursor="true"
+            :direction="'vertical'"
+            :slidesPerView="'auto'"
+            :freeMode="true"
+            :scrollbar="true"
+            :mousewheel="true"
             :modules="modules"
-            :loop="true"
-            :cards-effect="{
-                  perSlideOffset: 2,
-                  perSlideRotate: 1.5,
-                  rotate: true,
-                  slideShadows: false,
-                }"
             class="mySwiper"
             @swiper="onSwiper"
           >
@@ -56,7 +51,13 @@ import {Swiper, SwiperSlide} from "swiper/vue";
 import "swiper/css";
 import "swiper/css/effect-cards";
 import "./style.css";
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
+import './style.css';
+
+// import required modules
+import { Pagination, Navigation } from 'swiper/modules';
 // Import local page
 import MenuCard from "./MenuCard.vue"
 import Wishes from "./pages/Wishes.vue"
@@ -81,7 +82,7 @@ export default {
   },
   setup() {
     return {
-      modules: [EffectCards],
+      modules: [EffectCards, Pagination, Navigation],
     };
   },
   props: ['canOpen', 'guest', 'wishes'],
@@ -154,6 +155,16 @@ export default {
 </script>
 
 <style lang="less">
+.swiper-button-next, .swiper-button-prev{
+  --swiper-navigation-size: 20px;
+  --swiper-navigation-color: #ffffff;
+  --swiper-navigation-sides-offset: -10px;
+  padding: 15px;
+  background: #27231e;
+  opacity: 0.5;
+  border-radius: 50%;
+}
+
 .wedding-invitation {
   position: fixed;
   top: 0;

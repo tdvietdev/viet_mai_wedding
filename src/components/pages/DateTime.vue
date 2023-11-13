@@ -23,38 +23,38 @@
       </div>
     </div>
     <div class="date-time-area center-content flex-col">
-      Hôn lễ được tổ chức
-      <div class="date-time-table flex-row">
+      Hôn lễ được tổ chức vào lúc
+      <div class="date-time-table flex-col">
         <div class="time center-content flex-col">
-          <div class="time-text">Vào lúc</div>
-          <div class="time-value">10:00</div>
+          10 giờ 00 phút
         </div>
 
-        <div class="date center-content flex-col">
-          <div class="date-text">Ngày</div>
-          <div class="date-value">02/12/2023</div>
+        <div class="date center-content flex-row">
+          <div class="date-text">THỨ BẢY</div>
+          <div class="day center-content"><div class="day_value">02</div></div>
+          <div class="month">12 - 2023</div>
         </div>
       </div>
     </div>
       <div class="luna-date text-center">
-        Nhằm ngày 20 tháng 10 năm Quý Mão
+        Tức ngày 20 tháng 10 năm Quý Mão
       </div>
       <div class="place-area flex-col center-content">
         <div class="place-value">
           Tại tư gia nhà trai
         </div>
-        <div class="place-description">
-          <a href="https://maps.app.goo.gl/XpN5XAk1BJrimV1y6?g_st=ic">
-            <font-awesome-icon :icon="'fa-map-location-dot'"/>
-            Thôn Ngọc Đới, xã Quảng Phúc
-            <br> huyện Quảng Xương, Tỉnh Thanh Hoá</a>
-        </div>
+<!--        <div class="place-description">-->
+<!--          <a href="https://maps.app.goo.gl/XpN5XAk1BJrimV1y6?g_st=ic">-->
+<!--            <font-awesome-icon :icon="'fa-map-location-dot'"/>-->
+<!--            Thôn Ngọc Đới, xã Quảng Phúc-->
+<!--            <br> huyện Quảng Xương, Tỉnh Thanh Hoá</a>-->
+<!--        </div>-->
       </div>
       <div class="family-area center-content flex-col">
         <div class="family-header">
           Gia đình
         </div>
-        <div class="parents flex-row">
+        <div class="parents flex-row center-content">
           <div class="flex-col center-content">
             <div>Nhà trai</div>
             <div class="script-font">Ông. Trịnh Đình Trung</div>
@@ -69,9 +69,6 @@
       </div>
       <div class="welcome text-center">
         Rất hân hạnh được đón tiếp!
-      </div>
-      <div class="welcome-1 text-center">
-        Sự có mặt có quý khách là niềm vui cho gia đình chúng tôi
       </div>
   </div>
 </template>
@@ -99,27 +96,19 @@ export default {
     font-family: 'Josefin Sans', sans-serif;
     background-color: bisque;
     width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
 
     .welcome, .welcome-1 {
-      font-size: 18px;
+      margin-top: 20px;
+      font-size: 40px;
 
       .breakpoint-small({
-        font-size: 12px;
+        font-size: 18px;
       });
     }
 
     .luna-date {
-      font-size: 18px;
-
-      .breakpoint-small({
-        font-size: 14px;
-      });
-    }
-
-    .invitation-head {
       font-size: 30px;
 
       .breakpoint-small({
@@ -127,20 +116,29 @@ export default {
       });
     }
 
-    .invitation-name {
-      text-align: center;
-      font-size: 35px;
+    .invitation-head {
+      font-size: 50px;
+      line-height: 1;
 
       .breakpoint-small({
-        font-size: 22px;
+        font-size: 28px;
+      });
+    }
+
+    .invitation-name {
+      text-align: center;
+      font-size: 50px;
+
+      .breakpoint-small({
+        font-size: 28px;
       });
     }
 
     .invitation-foot {
-      font-size: 24px;
+      font-size: 35px;
 
       .breakpoint-small({
-        font-size: 18px;
+        font-size: 20px;
       });
     }
 
@@ -149,9 +147,13 @@ export default {
     }
 
     .our {
-      font-size: 40px;
+      font-size: 60px;
       line-height: 1.2;
-      margin: auto 0;
+      margin: 20px auto;
+
+      .breakpoint-small({
+        margin: 20px 0;
+      });
 
       .bride {
         flex: 1;
@@ -170,16 +172,16 @@ export default {
       }
 
       .breakpoint-small({
-        font-size: 30px;
-        line-height: 1;
+        font-size: 40px;
+        line-height: 1.2;
       });
     }
 
     .date-time-area {
-      font-size: 30px;
+      font-size: 36px;
 
       .breakpoint-small({
-        font-size: 20px;
+        font-size: 24px;
       });
     }
 
@@ -194,24 +196,26 @@ export default {
       });
 
       .family-header {
-        font-size: 30px;
+        font-size: 40px;
         line-height: 1;
 
         .breakpoint-small({
           line-height: 1;
-          font-size: 22px;
+          font-size: 24px;
         });
       }
 
       .parents {
         width: 100%;
+        font-size: 36px;
 
         .flex-col {
           flex: 1;
+          max-width: 400px;
         }
 
         .breakpoint-small({
-          font-size: 18px;
+          font-size: 20px;
           line-height: 1.5;
         });
       }
@@ -219,19 +223,19 @@ export default {
 
     .place-area {
       .place-value {
-        font-size: 28px;
+        font-size: 40px;
 
         .breakpoint-small({
-          font-size: 20px;
+          font-size: 28px;
         });
       }
 
       .place-description {
-        font-size: 18px;
+        font-size: 38px;
         text-align: center;
 
         .breakpoint-small({
-          font-size: 14px;
+          font-size: 18px;
         });
       }
     }
@@ -239,54 +243,39 @@ export default {
     .date-time-table {
       position: relative;
 
-      &:before {
-        content : "";
-        position: absolute;
-        bottom  : 0;
-        left  : 100px;
-        height  : 1px;
-        width   : 200px;
-        border-bottom: 4px solid #181818;
-
-        .breakpoint-small({
-          left  : 150px;
-          width   : 100px;
-          border-bottom: 2px solid #181818;
-        });
-      }
-
-      &:after {
-        content : "";
-        position: absolute;
-        top  : 0;
-        left  : 100px;
-        height  : 1px;
-        width   : 200px;
-        border-top: 4px solid #181818;
-
-        .breakpoint-small({
-          left  : 150px;
-          width   : 100px;
-          border-top: 2px solid #181818;
-        });
-      }
-
       .date {
         line-height: 1;
-        width: 200px;
-        border-left: #181818 2px solid;
 
-        .breakpoint-small({
-          padding-right: 50px;
-        });
+        .day {
+          font-size: 50px !important;
+          margin: 0 20px;
+          color: #ff1d00;
+          border-top: unset !important;
+          border-bottom: unset !important;
 
-        .date-text {
+          .breakpoint-small({
+            font-size: 36px !important;
+          });
+        }
+
+        .date-text, .month, .day {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-wrap: nowrap;
+          font-size: 30px;
+
+          height: 50px;
           margin-top: 10px;
           margin-bottom: 5px;
+          border-top: #181818 2px solid;
+          border-bottom: #181818 2px solid;
 
           .breakpoint-small({
             margin-top: 5px;
             margin-bottom: 2px;
+            font-size: 24px;
+            height: 40px;
           });
         }
 
@@ -303,11 +292,11 @@ export default {
 
       .time {
         line-height: 1;
-        width: 200px;
-        border-right: #181818 2px solid;
+        color: #ff1d00;
+        font-size: 60px;
 
         .breakpoint-small({
-          padding-left: 100px;
+          font-size: 28px;
         });
 
         .time-text {

@@ -1,5 +1,5 @@
 <template>
-  <div class="wedding-editor" ref="editor">
+  <div class="wedding-editor animate__animated animate__slow" :class="{animate__fadeOutUp: canOpen}" ref="editor">
     <header class="editor-header">
         <a href="javascript:;"></a>
         <a href="javascript:;" class="minimum"></a>
@@ -19,9 +19,9 @@
         <line x1="9" y1="3" x2="9" y2="21"></line>
       </svg>
     </div>
-    <Executions :canExecute="canExecute" @onUpdating="scrollToBottom" @onFinish="canOpen = true"/>
-    <invitationCard :wishes="wishes" :canOpen="canOpen" :guest="this.guest" @onClose="canOpen = false, hasClosed = true" @sendBarrage="onAfterSending" />
-    <Barrage :wish="wish" :barrages="wishes" :canStart="canStart"/>
+    <Executions :canExecute="canExecute" @onUpdating="scrollToBottom" @onFinish="canOpen = true; onActiveCover()"/>
+<!--    <invitationCard :wishes="wishes" :canOpen="canOpen" :guest="this.guest" @onClose="canOpen = false, hasClosed = true" @sendBarrage="onAfterSending" />-->
+<!--    <Barrage :wish="wish" :barrages="wishes" :canStart="canStart"/>-->
   </div>
 </template>
 
@@ -39,6 +39,7 @@
 
   export default {
     name: 'Editor',
+    props: ['onActiveCover'],
     components: { Executions, InvitationCard, Barrage },
     data() {
       return {
@@ -142,6 +143,7 @@
 
 <style lang="less">
 .wedding-editor{
+  background: #2B2B48;
   position: absolute;
   top: 0;
   left: 0;

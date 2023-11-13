@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>ThoiGian</h1>
+  <div class="swiper-content info-pages">
+    <div class="header text-center">Liên hệ</div>
   </div>
 </template>
 
@@ -19,6 +19,6 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less">
 
 </style>

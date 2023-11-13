@@ -1,7 +1,6 @@
 <template>
-  <div class="swiper-content" :id="galleryID">
-    <h1>Albummmmm </h1>
-
+  <div class="swiper-content album-pages" :id="galleryID">
+    <div class="header text-center">Album ảnh cưới</div>
     <a
       v-for="(image, key) in imagesData"
       :key="key"
@@ -50,3 +49,16 @@ export default {
   methods: {},
 };
 </script>
+<style lang="less">
+  @import '../../assets/media';
+  .album-pages {
+    .header {
+      font-size: 30px;
+
+      .breakpoint-small({
+        font-size: 18px;
+      });
+    }
+  }
+
+</style>

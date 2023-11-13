@@ -1,5 +1,5 @@
 <template>
-  <div class="swiper-content wishes-page flex-col">
+  <div class="swiper-content wishes-page flex-col center-content">
     <div class="header text-center">Gửi lời chúc</div>
     <div class="bank-area flex-row">
       <div class="center-content money flex-col">
@@ -118,6 +118,7 @@ export default {
   @import '../../assets/media';
 
   .wishes-page {
+
     .header {
       font-size: 30px;
 
@@ -128,9 +129,11 @@ export default {
 
     .bank-area {
       font-size: 22px;
+      width: 80%;
 
       .breakpoint-small({
         font-size: 16px;
+        width: unset;
       });
 
       .money {
@@ -154,9 +157,11 @@ export default {
 
     .text-area {
       font-size: 20px;
+      width: 70%;
 
       .breakpoint-small({
         font-size: 14px;
+        width: unset;
       });
 
 
