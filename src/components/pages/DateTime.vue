@@ -1,7 +1,7 @@
 <template>
   <div class="swiper-content date_time_content">
     <div class="invitation center-content flex-col">
-      <div class="invitation-head">
+      <div class="invitation-head scroll-element animate__animated" v-scroll-animate="'test'">
         Xin trân trọng kính mời
       </div>
       <div class="invitation-name script-font">

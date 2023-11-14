@@ -5,6 +5,9 @@
       <img class="end_page_img" src="./../images/common/bot.png">
     </div>
     <TimeLine />
+    <div class="end_page center-content">
+      <img class="end_page_img" src="./../images/common/bot.png">
+    </div>
     <Wishes :guest="this.guest" :wishes="this.wishes" />
   </div>
 </template>

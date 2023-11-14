@@ -1,14 +1,14 @@
 <template>
   <div class="swiper-content center-content flex-col timeline-content">
-    <div class="header">
+    <div class="header animate__animated animate__infinite animate__slow animate__pulse">
       Sự kiện
     </div>
     <div class="content flex-row">
-      <div class="calendar center-content">
-        <img class="time-line-image" src="../../images/common/timeline2.png" alt="">
+      <div class="calendar center-content animate__animated" v-scroll-animate>
+        <img class="time-line-image scroll-element"  src="../../images/common/timeline2.png" alt="">
       </div>
       <div class="timeline">
-        <div class="item flex-row">
+        <div class="item flex-row scroll-element animate__animated" v-scroll-animate>
           <div class="date_time flex-row">
             <div class="day">
               05
@@ -28,7 +28,7 @@
             </div>
           </div>
         </div>
-        <div class="item flex-row green">
+        <div class="item flex-row green animate__animated" v-scroll-animate>
           <div class="date_time flex">
             <div class="day">
               28
@@ -57,7 +57,7 @@
             </div>
           </div>
         </div>
-        <div class="item flex-row red">
+        <div class="item flex-row red animate__animated" v-scroll-animate>
           <div class="date_time flex-row">
             <div class="day">
               02
@@ -108,6 +108,12 @@ export default {
 
 <style lang="less">
   @import '../../assets/media';
+
+  .timeline-content {
+    .header {
+      text-decoration: underline;
+    }
+  }
 
   .content {
     .breakpoint-small({

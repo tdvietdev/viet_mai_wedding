@@ -1,26 +1,62 @@
 <template>
   <div class="swiper-content wishes-page flex-col center-content">
-    <div class="header text-center">Gửi lời chúc</div>
+    <div class="header text-center animate__animated animate__infinite animate__slow animate__pulse">Gửi lời chúc</div>
+    <div class="confirmation-area">
+      <div class="description">
+        Đám cưới của chúng mình sẽ trọn vẹn hơn khi có thêm lời chúc phúc và sự hiện diện của các bạn.<br>
+        Bạn sẽ đến chứ? Bạn vui lòng phản hồi sớm để chúng mình có thể chuẩn bị chu đáo nhất nhé. <br>
+        Chúng mình rất cảm ơn ạ!
+      </div>
+
+      <div class="confirm-inputs input-area flex-col">
+        <div class="inputs flex-col">
+          <div class="input-controller flex-row">
+            <div class="text">Nhập tên</div>
+            <input placeholder="Nhập tên của bạn nhé!" class="input-elm name-input" type="text" v-model="name">
+          </div>
+
+          <div class="input-controller flex-col">
+            <div class="text">Bạn sẽ đến với chúng mình chứ?</div>
+            <div class="flex-row">
+              <div class="radio-controller">
+                <input type="radio" id="yes" value="yes" v-model="goConfirm" />
+                <label for="yes">Tôi sẽ đến!</label>
+              </div>
+              <div class="radio-controller">
+                <input type="radio" id="no" value="no" v-model="goConfirm" />
+                <label for="no">Tôi bận mất rồi :(</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="button-element center-content">
+          <button class="submit-button" @click="sendDataToApi()" :disabled="!name || confirmed">
+            Gửi
+          </button>
+        </div>
+      </div>
+    </div>
+
     <div class="bank-area flex-row">
-      <div class="center-content money flex-col">
-        <div class="info center-content flex-col">
+      <div class="center-content money flex-col" >
+        <div class="info center-content flex-col" v-scroll-animate>
           <div class="for">Cho cô dâu</div>
           <div class="name">Le Thi Mai</div>
           <div class="bank">Vietcombank</div>
           <div class="id">1031594849 <font-awesome-icon :icon="this.copyIconBride" @click="copyToClipBoard('bride')"/></div>
         </div>
-        <div class="qr">
+        <div class="qr" v-scroll-animate>
           <img class="image" src="../../images/bank/vk.png" alt="">
         </div>
       </div>
-      <div class="center-content money flex-col-rev">
-        <div class="info center-content flex-col">
+      <div class="center-content money flex-col" >
+        <div class="info center-content flex-col" v-scroll-animate>
           <div class="for">Cho chú rể</div>
           <div class="for">Trinh Dinh Viet</div>
           <div class="bank">Vietcombank</div>
           <div class="id">0491000139237 <font-awesome-icon :icon="this.copyIconGoom" @click="copyToClipBoard('goom')"/></div>
         </div>
-        <div class="qr">
+        <div class="qr" v-scroll-animate>
           <img class="image" src="../../images/bank/ck.png" alt="">
         </div>
       </div>
@@ -55,6 +91,7 @@
 
 <script>
 import WishService from "../../services/WishService";
+import axios from 'axios';
 
 export default {
   props: ['guest', 'wishes'],
@@ -63,7 +100,9 @@ export default {
       copyIconGoom: 'fa-copy',
       copyIconBride: 'fa-copy',
       message: '',
+      goConfirm: 'yes',
       name: this.guest.id === 'all' ? '' : this.guest.name,
+      confirmed: false
     };
   },
   watch: {
@@ -75,6 +114,25 @@ export default {
     }
   },
   methods: {
+    async sendDataToApi() {
+      try {
+        const response = await axios.post('https://script.google.com/macros/s/AKfycbw_Yw50UKIDeAipEXpEhwlzhwngC8Sb9e42nEnq7kY8UoCwBX_ifV-9K09zlk98TBct/exec', {
+          name: this.name,
+          is_ok: this.goConfirm,
+        }, {
+          headers: {
+            'Content-Type': 'application/json; charset=utf-8',
+          },
+        });
+
+        // Xử lý response ở đây nếu cần
+        console.log(response.data);
+        this.confirmed = true
+      } catch (error) {
+        // Xử lý lỗi ở đây nếu cần
+        console.error(error);
+      }
+    },
     copyToClipBoard(type) {
       let bankId = ''
       const remain = 1000;
@@ -120,10 +178,36 @@ export default {
   .wishes-page {
 
     .header {
-      font-size: 30px;
+      font-size: 50px;
+      text-decoration: underline;
 
       .breakpoint-small({
-        font-size: 18px;
+        font-size: 28px;
+      });
+    }
+
+    .confirmation-area {
+      font-size: 22px;
+      width: 80%;
+
+      .description {
+        padding: 0 20px;
+      }
+
+      .confirm-inputs {
+        border: #d9a150 2px solid;
+        padding: 10px;
+        width: 70%;
+        margin: 10px auto;
+
+        .breakpoint-small({
+          width: 100%;
+        });
+      }
+
+      .breakpoint-small({
+        font-size: 16px;
+        width: 100%;
       });
     }
 
@@ -133,7 +217,7 @@ export default {
 
       .breakpoint-small({
         font-size: 16px;
-        width: unset;
+        width: 100%;
       });
 
       .money {
@@ -158,10 +242,12 @@ export default {
     .text-area {
       font-size: 20px;
       width: 70%;
+      max-height: 800px;
 
       .breakpoint-small({
         font-size: 14px;
         width: unset;
+        max-height: 500px;
       });
 
 
@@ -174,6 +260,7 @@ export default {
         max-height: 100%;
         border: #d9a150 2px solid;
         margin: 10px;
+        padding: 5px 10px;
 
         .breakpoint-small({
           padding: 5px 10px;
@@ -189,50 +276,58 @@ export default {
         }
       }
 
-      .input-area {
-        .submit-button {
-          font-size: 22px;
+      .button-element {
+        padding: 5px;
+      }
+    }
 
-          .breakpoint-small({
-            font-size: 14px;
-          });
-        }
+    .input-area {
+      .submit-button {
+        font-size: 22px;
 
-        .inputs {
-          flex: 1;
-        }
+        .breakpoint-small({
+          font-size: 14px;
+        });
+      }
 
-        .input-controller {
-          margin-top: 10px;
-          .text {
-            width: 100px;
+      .inputs {
+        flex: 1;
+      }
 
-            .breakpoint-small({
-              width: 80px;
-            });
-          }
+      .radio-controller {
+        margin: 0 10px;
 
-          .input-elm {
-            flex: 1;
-            font-size: 18px;
-
-            .breakpoint-small({
-              font-size: 13px;
-            });
-          }
-
-          .message-input {
-            height: 80px;
-
-            .breakpoint-small({
-              height: 60px;
-            });
-          }
+        label {
+          margin-left: 5px;
         }
       }
 
-      .button-element {
-        padding: 5px;
+      .input-controller {
+        margin-top: 10px;
+        .text {
+          min-width: 100px;
+
+          .breakpoint-small({
+            min-width: 80px;
+          });
+        }
+
+        .input-elm {
+          flex: 1;
+          font-size: 18px;
+
+          .breakpoint-small({
+            font-size: 13px;
+          });
+        }
+
+        .message-input {
+          height: 80px;
+
+          .breakpoint-small({
+            height: 60px;
+          });
+        }
       }
     }
   }
