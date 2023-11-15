@@ -19,9 +19,69 @@
         :modules="modules"
         class="mySwiper"
       >
-        <swiper-slide v-for="(item, index) in Array.from(Array(13).keys())">
+        <swiper-slide>
           <div class="swiper-zoom-container">
-            <img :src="`src/images/album/${index+1}.JPG`" />
+            <img src="../../images/album/1.jpg" />
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div class="swiper-zoom-container">
+            <img src="../../images/album/2.jpg" />
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div class="swiper-zoom-container">
+            <img src="../../images/album/3.jpg" />
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div class="swiper-zoom-container">
+            <img src="../../images/album/4.jpg" />
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div class="swiper-zoom-container">
+            <img src="../../images/album/5.jpg" />
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div class="swiper-zoom-container">
+            <img src="../../images/album/6.jpg" />
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div class="swiper-zoom-container">
+            <img src="../../images/album/7.jpg" />
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div class="swiper-zoom-container">
+            <img src="../../images/album/8.jpg" />
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div class="swiper-zoom-container">
+            <img src="../../images/album/9.jpg" />
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div class="swiper-zoom-container">
+            <img src="../../images/album/10.jpg" />
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div class="swiper-zoom-container">
+            <img src="../../images/album/11.jpg" />
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div class="swiper-zoom-container">
+            <img src="../../images/album/12.jpg" />
+          </div>
+        </swiper-slide>
+        <swiper-slide>
+          <div class="swiper-zoom-container">
+            <img src="../../images/album/13.jpg" />
           </div>
         </swiper-slide>
       </swiper>
