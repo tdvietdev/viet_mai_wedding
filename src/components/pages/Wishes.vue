@@ -116,20 +116,14 @@ export default {
   methods: {
     async sendDataToApi() {
       try {
-        const response = await axios.post('https://script.google.com/macros/s/AKfycbw_Yw50UKIDeAipEXpEhwlzhwngC8Sb9e42nEnq7kY8UoCwBX_ifV-9K09zlk98TBct/exec', {
-          name: this.name,
-          is_ok: this.goConfirm,
-        }, {
-          headers: {
-            'Content-Type': 'application/json; charset=utf-8',
-          },
-        });
-
-        // Xử lý response ở đây nếu cần
-        console.log(response.data);
+        const url = 'https://script.google.com/macros/s/AKfycbw_Yw50UKIDeAipEXpEhwlzhwngC8Sb9e42nEnq7kY8UoCwBX_ifV-9K09zlk98TBct/exec';
         this.confirmed = true
+
+        const data = new FormData();
+        data.append('name', this.name);
+        data.append('is_ok', this.goConfirm);
+        const response = await axios.post(url, data);
       } catch (error) {
-        // Xử lý lỗi ở đây nếu cần
         console.error(error);
       }
     },
