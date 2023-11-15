@@ -9,6 +9,10 @@
       <img class="end_page_img" src="./../images/common/bot.png">
     </div>
     <Wishes :guest="this.guest" :wishes="this.wishes" />
+    <div class="end_page center-content">
+      <img class="end_page_img" src="./../images/common/bot.png">
+    </div>
+    <Album />
   </div>
 </template>
 
@@ -16,9 +20,11 @@
 import DateTime from "./pages/DateTime.vue"
 import TimeLine from "./pages/TimeLine.vue"
 import Wishes from "./pages/Wishes.vue"
+import Album from "./pages/Album.vue"
 export default {
   props: ['guest', 'wishes', 'isActiveContent'],
   components: {
+    Album,
     DateTime,
     TimeLine,
     Wishes

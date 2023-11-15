@@ -2,17 +2,17 @@
   <div class="swiper-content wishes-page flex-col center-content">
     <div class="header text-center animate__animated animate__infinite animate__slow animate__pulse">Gửi lời chúc</div>
     <div class="confirmation-area">
-      <div class="description">
+      <div class="description" v-scroll-animate>
         Đám cưới của chúng mình sẽ trọn vẹn hơn khi có thêm lời chúc phúc và sự hiện diện của các bạn.<br>
         Bạn sẽ đến chứ? Bạn vui lòng phản hồi sớm để chúng mình có thể chuẩn bị chu đáo nhất nhé. <br>
         Chúng mình rất cảm ơn ạ!
       </div>
 
-      <div class="confirm-inputs input-area flex-col">
+      <div class="confirm-inputs input-area flex-col" v-scroll-animate>
         <div class="inputs flex-col">
           <div class="input-controller flex-row">
             <div class="text">Nhập tên</div>
-            <input placeholder="Nhập tên của bạn nhé!" class="input-elm name-input" type="text" v-model="name">
+            <input placeholder="Cho mình xin tên của bạn ở đây nhé!" class="input-elm name-input" type="text" v-model="name">
           </div>
 
           <div class="input-controller flex-col">
@@ -62,16 +62,16 @@
       </div>
     </div>
     <div class="text-area flex-col">
-      <div class="list-wishes" id="scroll-1">
+      <div class="list-wishes" id="scroll-1" v-scroll-animate>
         <div class="wish-item" v-for="(wish, index) in wishes" :key="index">
           <span class="user-name">{{ wish.name }}:</span> {{ wish.wish }}
         </div>
       </div>
-      <div class="input-area flex-row">
+      <div class="input-area flex-row" v-scroll-animate>
         <div class="inputs flex-col">
           <div class="input-controller flex-row">
             <div class="text">Nhập tên</div>
-            <input placeholder="Nhập tên của bạn nhé!" class="input-elm name-input" type="text" v-model="name">
+            <input placeholder="Cho chúng mình xin tên của bạn ở đây nhé!" class="input-elm name-input" type="text" v-model="name">
           </div>
 
           <div class="input-controller flex-row">
@@ -110,6 +110,12 @@ export default {
       deep: true,
       handler(value) {
         this.name = value.id === 'all' ? '' : value.name
+      }
+    },
+    wishes: function(newVal, oldVal) {
+      console.log('Prop changed: ', newVal, ' | was: ', oldVal)
+      if(newVal.length && !oldVal.length) {
+        this.scrollToBottom()
       }
     }
   },
@@ -157,7 +163,7 @@ export default {
       setTimeout(() => {
         const container = this.$el.querySelector("#scroll-1");
         container.scrollTop = container.scrollHeight;
-      }, 200)
+      }, 10000)
     },
   },
   mounted() {
@@ -182,7 +188,7 @@ export default {
 
     .confirmation-area {
       font-size: 22px;
-      width: 80%;
+      width: 70%;
 
       .description {
         padding: 0 20px;

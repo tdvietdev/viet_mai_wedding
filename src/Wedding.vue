@@ -1,5 +1,8 @@
 <template>
   <div class="wedding">
+    <audio autoplay loop id="playAudio">
+      <source src="./audios/CoEmDoiBongVui.mp3">
+    </audio>
     <Editor :on-active-cover="activeCover"/>
     <Cover :isActiveCover="isActiveCover" :guest="this.guest" :on-active-content="activeContent"/>
     <CardContent :guest="this.guest" :wishes="this.wishes" :is-active-content="isActiveContent"/>
@@ -35,6 +38,7 @@
         this.isActiveCover = true
       },
       activeContent() {
+        document.getElementById('playAudio').play();
         setTimeout(() => {
           this.isActiveContent = true
         }, 500)

@@ -11,7 +11,7 @@
         Đến dự lễ thành hôn của hai chúng tôi
       </div>
     </div>
-    <div class="our script-font center-content flex-col">
+    <div class="our script-font center-content flex-col animate__animated animate__infinite animate__slow animate__heartBeat">
       <div class="goom">
         Trịnh Đình Việt
       </div>
@@ -24,7 +24,7 @@
     </div>
     <div class="date-time-area center-content flex-col">
       Hôn lễ được tổ chức vào lúc
-      <div class="date-time-table flex-col">
+      <div class="date-time-table flex-col animate__animated animate__infinite animate__slow animate__pulse">
         <div class="time center-content flex-col">
           10 giờ 00 phút
         </div>
