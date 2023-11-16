@@ -261,6 +261,7 @@ export default {
         border: #d9a150 2px solid;
         margin: 10px;
         padding: 5px 10px;
+        min-height: 300px;
 
         .breakpoint-small({
           padding: 5px 10px;
