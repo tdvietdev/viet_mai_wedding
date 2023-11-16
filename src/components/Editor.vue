@@ -83,7 +83,7 @@
           let count = 0, typingCount = 0, typing
           let step = () => {
             let randomNumber = Math.round(Math.random() * 6)
-            if(count % 2 === 0 && randomNumber % 4 === 0){
+            if(count % 2 === 0 && randomNumber % 1 === 0){
               this.currentCode = this.code.substring(0, typingCount)
               typingCount++
             }
