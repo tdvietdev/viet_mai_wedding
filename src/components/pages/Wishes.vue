@@ -2,7 +2,7 @@
   <div class="swiper-content wishes-page flex-col center-content">
     <div class="header text-center animate__animated animate__infinite animate__slow animate__pulse">Gửi lời chúc</div>
     <div class="confirmation-area">
-      <div class="description" v-scroll-animate>
+      <div class="description text-center" v-scroll-animate>
         Đám cưới của chúng mình sẽ trọn vẹn hơn khi có thêm lời chúc phúc và sự hiện diện của các bạn.<br>
         Bạn sẽ đến chứ? Bạn vui lòng phản hồi sớm để chúng mình có thể chuẩn bị chu đáo nhất nhé. <br>
         Chúng mình rất cảm ơn ạ!

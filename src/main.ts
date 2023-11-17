@@ -29,8 +29,6 @@ const app = createApp(Wedding)
 
 app.directive('scroll-animate', {
   mounted(el, binding) {
-    console.log("binding")
-    console.log(binding)
     const animateName = binding.value || "animate__bounceInLeft"
     // Hàm xử lý sự kiện scroll
     function handleScroll() {

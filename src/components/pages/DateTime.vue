@@ -5,10 +5,10 @@
         Xin trân trọng kính mời
       </div>
       <div class="invitation-name script-font">
-        {{ guestName }}
+        {{ guest.name }}
       </div>
       <div class="invitation-foot">
-        Đến dự lễ thành hôn của hai chúng tôi
+        Đến dự lễ thành hôn của {{ guest.meCall || 'chúng tôi' }}
       </div>
     </div>
     <div class="our script-font center-content flex-col animate__animated animate__infinite animate__slow animate__heartBeat">
@@ -75,7 +75,7 @@
 
 <script>
 export default {
-  props: ['guestName'],
+  props: ['guest'],
   data() {
     return {
       isActive: false,

@@ -1,6 +1,6 @@
 <template>
   <div class="card-content animate__animated animate__slow" :class="{hidden: !isActiveContent, animate__fadeInDown: isActiveContent}">
-    <DateTime :guest-name="this.guest.name" />
+    <DateTime :guest="this.guest" />
     <div class="end_page center-content">
       <img class="end_page_img" src="./../images/common/bot.png">
     </div>

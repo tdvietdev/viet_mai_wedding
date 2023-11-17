@@ -49,7 +49,7 @@
         return urlParams.get('uid')
       },
       onLoadGuest(_guest) {
-        this.guest = _guest.val() ? {id: _guest.key, name: _guest.val().name} : {}
+        this.guest = _guest.val() ? {id: _guest.key, name: _guest.val().name, meCall: _guest.val().me_call} : {}
         // this.guest = _guest.val() || {}
         if (this.guest.name) {
           document.querySelector('meta[property="og:title"]').setAttribute("content", `Thân gửi: ${this.guest.name}!`);
