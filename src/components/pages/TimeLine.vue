@@ -50,7 +50,7 @@
               08 : 15 Tại tư gia nhà gái
             </div>
             <div class="sub-event-place">
-              <a href="https://maps.app.goo.gl/XpN5XAk1BJrimV1y6?g_st=ic">
+              <a href="https://maps.app.goo.gl/zq8tqkGb4J2tc7TD7?g_st=ic">
                 <font-awesome-icon :icon="'fa-map-location-dot'"/>
                 Nhà 05, N.32, đường số 2, thôn Phú Cường, xã Quảng Trường
                 <br> huyện Quảng Xương, Tỉnh Thanh Hoá</a>

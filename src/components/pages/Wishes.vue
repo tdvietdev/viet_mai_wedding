@@ -37,13 +37,18 @@
       </div>
     </div>
 
+    <div class="text-center gift-text">
+      Anh chị em cô chú bác gì ở xa có thể gửi quà cho vợ chồng mình/anh/em/cháu <br>
+      qua hộp mừng online ở phía dưới đây ạ
+    </div>
+
     <div class="bank-area flex-row">
       <div class="center-content money flex-col" >
         <div class="info center-content flex-col" v-scroll-animate>
           <div class="for">Cho cô dâu</div>
           <div class="name">Le Thi Mai</div>
           <div class="bank">Vietcombank</div>
-          <div class="id">1031594849 <font-awesome-icon :icon="this.copyIconBride" @click="copyToClipBoard('bride')"/></div>
+          <div class="id">1031594849 <font-awesome-icon :class="{green: this.copyIconBride === 'fa-check'}" :icon="this.copyIconBride" @click="copyToClipBoard('bride')"/></div>
         </div>
         <div class="qr" v-scroll-animate>
           <img class="image" src="../../images/bank/vk.png" alt="">
@@ -54,7 +59,7 @@
           <div class="for">Cho chú rể</div>
           <div class="for">Trinh Dinh Viet</div>
           <div class="bank">Vietcombank</div>
-          <div class="id">0491000139237 <font-awesome-icon :icon="this.copyIconGoom" @click="copyToClipBoard('goom')"/></div>
+          <div class="id">0491000139237 <font-awesome-icon :class="{green: this.copyIconGoom === 'fa-check'}" :icon="this.copyIconGoom" @click="copyToClipBoard('goom')"/></div>
         </div>
         <div class="qr" v-scroll-animate>
           <img class="image" src="../../images/bank/ck.png" alt="">
@@ -176,6 +181,19 @@ export default {
   @import '../../assets/media';
 
   .wishes-page {
+    .green {
+      color: #00CC66;
+    }
+
+    .gift-text {
+      font-size: 22px;
+      margin-bottom: 10px;
+
+      .breakpoint-small({
+        font-size: 16px;
+        margin-bottom: 6px;
+      });
+    }
 
     .header {
       font-size: 50px;
